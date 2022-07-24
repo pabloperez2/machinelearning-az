@@ -36,7 +36,7 @@ X[:, 0] = labelencoder_X.fit_transform(X[:, 0])
 ct = ColumnTransformer(
     [('one_hot_encoder', OneHotEncoder(categories='auto'), [0])],   
     remainder='passthrough'                        
-)
+)##el [0] es para indicar la columna 1
 
 X = np.array(ct.fit_transform(X), dtype=np.float)
 labelencoder_y = LabelEncoder()
