@@ -30,14 +30,14 @@ from sklearn.preprocessing import StandardScaler
 sc_X = StandardScaler()
 sc_y = StandardScaler()
 X = sc_X.fit_transform(X)
-y = sc_y.fit_transform(y.reshape(-1,1))
+y = sc_y.fit_transform(y.reshape(-1,1))##solucion al error porque espera matriz 2d y es solo 1d
 
 # Ajustar la regresión con el dataset
 from sklearn.svm import SVR
 regression = SVR(kernel = "rbf")
 regression.fit(X, y)
 
-# Predicción de nuestros modelos con SVR
+# Predicción de nuestros modelos con SVR, como todo estaba escalado se debe encontrar la inversa de esto para encontrar el valor real
 y_pred = sc_y.inverse_transform(regression.predict(sc_X.transform(np.array([[6.5]]))))
 
 # Visualización de los resultados del SVR
